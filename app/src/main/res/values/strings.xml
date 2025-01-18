@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MyToDoApp</string>
+    <string name="info_button_description">Редактировать задачу</string>
+
+    <string-array name="priority_array">
+        <item>Нет</item>
+        <item>Низкий</item>
+        <item>!! Высокий</item>
+    </string-array>
+</resources>
