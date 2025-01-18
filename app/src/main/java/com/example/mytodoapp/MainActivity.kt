@@ -20,25 +20,23 @@ import java.util.*
 class MainActivity : ComponentActivity() {
 
     companion object {
-        const val ADD_TASK_REQUEST = 1 // Уникальный код для идентификации запроса
+        const val ADD_TASK_REQUEST = 1 // unique code to identify the request
     }
 
     private lateinit var recyclerView: RecyclerView
     private val todoItemsRepository = TodoItemsRepository()
     private lateinit var tasksAdapter: TasksAdapter
 
-    // Для отслеживания свайпа
-    private val swipeLimit = 200f // 200dp в пикселях
+    // for swipe tracking
+    private val swipeLimit = 200f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Инициализация RecyclerView и адаптера
         recyclerView = findViewById(R.id.recyclerViewTasks)
         setupRecyclerView()
 
-        // Установка обработчика кнопки добавления задачи
         val roundButton: Button = findViewById(R.id.roundButton)
         roundButton.setOnClickListener {
             val intent = Intent(this, AddTaskActivity::class.java)
@@ -66,7 +64,7 @@ class MainActivity : ComponentActivity() {
             }
 
             if (taskId != null) {
-                // Если taskId передан, обновляем существующую задачу
+                // if the taskId is passed, we update the existing task.
                 val task = todoItemsRepository.getTodoItemById(taskId)
                 task?.let {
                     it.text = taskText
@@ -75,7 +73,7 @@ class MainActivity : ComponentActivity() {
                     todoItemsRepository.updateTodoItem(it)
                 }
             } else {
-                // Добавляем новую задачу
+                // adding a new task
                 val newTask = TodoItem(
                     id = UUID.randomUUID().toString(),
                     text = taskText,
@@ -103,7 +101,6 @@ class MainActivity : ComponentActivity() {
         recyclerView.adapter = tasksAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Добавляем ItemTouchHelper для обработки свайпов
         val swipeCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
 
             private val greenBackground = ColorDrawable(Color.parseColor("#34C759"))
@@ -125,12 +122,12 @@ class MainActivity : ComponentActivity() {
 
                 when (direction) {
                     ItemTouchHelper.RIGHT -> {
-                        // Завершить задачу
+                        // complete the task
                         task.isCompleted = true
                         todoItemsRepository.updateTodoItem(task)
                     }
                     ItemTouchHelper.LEFT -> {
-                        // Удалить задачу
+                        // delete the task
                         todoItemsRepository.deleteTodoItem(task)
                     }
                 }
@@ -148,7 +145,6 @@ class MainActivity : ComponentActivity() {
             ) {
                 val itemView = viewHolder.itemView
 
-                // Ограничение значения dX
                 val limitedDx = when {
                     dX > swipeLimit -> swipeLimit
                     dX < -swipeLimit -> -swipeLimit
@@ -156,7 +152,7 @@ class MainActivity : ComponentActivity() {
                 }
 
                 if (limitedDx > 0) {
-                    // Свайп вправо (зеленый фон с галочкой)
+                    // swipe to the right
                     greenBackground.setBounds(
                         itemView.left,
                         itemView.top,
@@ -176,7 +172,7 @@ class MainActivity : ComponentActivity() {
                         it.draw(c)
                     }
                 } else if (limitedDx < 0) {
-                    // Свайп влево (красный фон с мусоркой)
+                    // swipe to the left
                     redBackground.setBounds(
                         itemView.right + limitedDx.toInt(),
                         itemView.top,
@@ -197,7 +193,6 @@ class MainActivity : ComponentActivity() {
                     }
                 }
 
-                // Передаем ограниченное значение limitedDx
                 super.onChildDraw(c, recyclerView, viewHolder, limitedDx, dY, actionState, isCurrentlyActive)
             }
         }

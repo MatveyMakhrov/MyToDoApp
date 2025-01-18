@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <solid android:color="#007AFF"/>
-    <corners android:radius="40dp"/> <!-- Радиус углов для круглой формы -->
+    <corners android:radius="40dp"/> <!-- radius of the corners -->
 </shape>

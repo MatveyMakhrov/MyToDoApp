@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <!-- Кнопка крестик -->
+            <!--  cross button -->
             <ImageButton
                 android:id="@+id/closeButton"
                 android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
                 android:layout_gravity="bottom|start"
                 android:layout_marginStart="0dp"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Close"
+                android:contentDescription="@string/close"
                 android:src="@android:drawable/ic_menu_close_clear_cancel"
                 app:tint="#000000" />
 
@@ -42,7 +42,7 @@
                 android:background="@android:color/transparent"
                 android:textColor="@color/blue"
                 android:textSize="20sp"
-                android:text="Сохранить" />
+                android:text="@string/save" />
         </FrameLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -54,7 +54,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:hint="Что надо сделать..."
+        android:hint="@string/what_to_do"
         android:padding="16dp"
         android:textSize="22sp"
         android:textColorHint="@color/hint_color"
@@ -63,6 +63,7 @@
         android:gravity="top|start"
         android:scrollHorizontally="false"
         android:background="@drawable/rounded_edittext"
+        android:autofillHints="text"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -71,9 +72,9 @@
         android:id="@+id/textViewPriority"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Важность"
+        android:text="@string/importance"
         android:layout_marginTop="16dp"
-        android:textSize="22dp"
+        android:textSize="22sp"
         android:textColor="@android:color/black"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/editTextTask"
@@ -109,16 +110,16 @@
         android:id="@+id/textViewDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Сделать до"
+        android:text="@string/deadline"
         android:layout_marginTop="16dp"
-        android:textSize="22dp"
+        android:textSize="22sp"
         android:textColor="@android:color/black"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/divider1"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="20dp" />
 
-    <Switch
+    <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/mySwitch"
         android:layout_width="70dp"
         android:layout_height="50dp"
@@ -159,7 +160,7 @@
         android:drawableStart="@drawable/ic_delete_red"
         android:drawablePadding="8dp"
         android:padding="10dp"
-        android:text="Удалить"
+        android:text="@string/delete"
         android:textColor="#FF3B30"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@+id/divider2"

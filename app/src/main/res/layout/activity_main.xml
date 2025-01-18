@@ -4,35 +4,34 @@
     android:layout_height="match_parent"
     android:background="#F7F6F2">
 
-    <!-- Заголовок "Мои дела" -->
+    <!-- headline -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Мои дела"
+        android:text="@string/my_tasks"
         android:textSize="38sp"
         android:textColor="#000000"
-        android:layout_marginLeft="70dp"
+        android:layout_marginStart="70dp"
         android:layout_marginTop="100dp"
         android:textStyle="bold" />
 
-    <!-- Кнопка для добавления нового дела -->
+    <!-- button for adding a new case -->
     <Button
         android:id="@+id/roundButton"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_centerInParent="true"
         android:background="@drawable/button_round"
-        android:text="+"
+        android:text="@string/plus"
         android:textColor="#FFFFFF"
         android:textSize="35sp"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="25dp"/>
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -48,8 +47,6 @@
             android:layout_marginBottom="10dp"/>
 
     </LinearLayout>
-
-
 
 </RelativeLayout>
 

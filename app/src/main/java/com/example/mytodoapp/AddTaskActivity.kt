@@ -30,35 +30,33 @@ class AddTaskActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_addtask)
 
-        // Инициализация Toolbar
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        // Устанавливаем пустой заголовок
+        // setting an empty header
         supportActionBar?.title = ""
 
-        // Инициализация кнопки "крестик"
+        // initializing the cross button
         val closeButton: View = findViewById(R.id.closeButton)
         closeButton.setOnClickListener {
-            finish() // Закрываем текущую активность и возвращаемся к предыдущей
+            finish() // close the current activity and return to the previous one
         }
 
-        // Получаем ссылку на Spinner
+        // get a link to the Spinner
         val spinner: Spinner = findViewById(R.id.spinnerPriority)
 
-        // Получаем массив строковых значений из ресурсов
+        // get an array of string values from resources
         val priorityOptions = resources.getStringArray(R.array.priority_array)
 
-        // Создаем адаптер для Spinner, используя стандартный layout для элементов
         val adapter = CustomSpinnerAdapter(this, priorityOptions)
 
-        // Устанавливаем стиль для выпадающего списка
+        // setting the style for the drop-down list
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-        // Применяем адаптер к Spinner
+        // applying the adapter to the Spinner
         spinner.adapter = adapter
 
-        // Устанавливаем слушатель для выбора элемента в Spinner
+        // setting a listener to select an item in the Spinner
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parentView: AdapterView<*>?,
@@ -66,12 +64,12 @@ class AddTaskActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                // Получаем выбранную строку
+                // getting the selected row
                 val selectedPriority = priorityOptions[position]
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>?) {
-                // Ничего не выбрано, если пользователь не выбрал элемент
+                // nothing is selected if the user has not selected the item.
             }
         }
 

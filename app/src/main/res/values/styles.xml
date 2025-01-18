@@ -2,31 +2,31 @@
 <resources>
 
     <style name="CustomDatePickerDialog" parent="Theme.AppCompat.Light.Dialog">
-        <!-- Устанавливаем белый фон -->
+        <!-- setting the white background -->
         <item name="android:background">@android:color/white</item>
-        <!-- Устанавливаем цвет текста (например, черный) -->
+        <!-- setting the text color -->
         <item name="android:textColorPrimary">@android:color/black</item>
         <item name="android:textColorSecondary">@android:color/black</item>
-        <!-- Стили для кнопок -->
+        <!-- styles for buttons -->
         <item name="android:buttonBarPositiveButtonStyle">@style/CustomPositiveButton</item>
         <item name="android:buttonBarNegativeButtonStyle">@style/CustomNegativeButton</item>
     </style>
 
     <style name="CustomDatePicker">
-        <item name="android:background">@color/blue</item> <!-- Цвет фона шапки -->
-        <item name="android:textColor">@color/white</item> <!-- Цвет текста в шапке -->
+        <item name="android:background">@color/blue</item> <!-- header background color -->
+        <item name="android:textColor">@color/white</item> <!-- color of the text in the header -->
     </style>
 
-    <!-- Стиль для кнопки "ОК" -->
+    <!-- style for the "OK" button -->
     <style name="CustomPositiveButton" parent="Widget.AppCompat.Button.Borderless">
-        <item name="android:textColor">@color/blue</item> <!-- Белый текст -->
+        <item name="android:textColor">@color/blue</item> <!-- white text -->
     </style>
 
-    <!-- Стиль для кнопки "Отмена" -->
+    <!-- style for the Cancel button -->
     <style name="CustomNegativeButton" parent="Widget.AppCompat.Button.Borderless">
         <item name="android:textColor">@color/blue</item>
 
-        <!-- Изменение цвета фона для выбранного дня -->
+        <!-- changing the background color for the selected day -->
         <item name="android:colorAccent">@color/blue</item>
     </style>
 

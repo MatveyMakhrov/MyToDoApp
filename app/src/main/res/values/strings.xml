@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">MyToDoApp</string>
+    <string name="my_tasks">Мои дела</string>
+    <string name="plus">+</string>
+    <string name="close">Close</string>
+    <string name="save">Сохранить</string>
+    <string name="importance">Важность</string>
+    <string name="what_to_do">Что надо сделать&#8230;</string>
+    <string name="deadline">Сделать до</string>
+    <string name="delete">Удалить</string>
     <string name="info_button_description">Редактировать задачу</string>
 
     <string-array name="priority_array">
