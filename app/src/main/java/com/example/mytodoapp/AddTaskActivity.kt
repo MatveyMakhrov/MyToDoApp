@@ -14,11 +14,11 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
-import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.switchmaterial.SwitchMaterial
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -64,8 +64,6 @@ class AddTaskActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                // getting the selected row
-                val selectedPriority = priorityOptions[position]
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>?) {
@@ -73,25 +71,21 @@ class AddTaskActivity : AppCompatActivity() {
             }
         }
 
-        // Устанавливаем начальное значение (например, "Нет")
-        spinner.setSelection(0)  // Индекс первого элемента
+        // setting the initial value
+        spinner.setSelection(0)
 
-        // Получаем ссылку на Switch и TextView из разметки
-        val mySwitch: Switch = findViewById(R.id.mySwitch)
+        // get a link to the Switch and TextView from the markup
+        val mySwitch: SwitchMaterial = findViewById(R.id.mySwitch)
         val selectedDateText: TextView = findViewById(R.id.selectedDateText)
 
-        // Устанавливаем обработчик для переключения Switch
         mySwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                // Если Switch включен, показываем DatePickerDialog
                 showDatePickerDialog(selectedDateText)
             }
         }
 
-        // Получаем ссылку на кнопку по ID
         val buttonSave: Button = findViewById(R.id.buttonSave)
 
-        // Устанавливаем обработчик нажатия на кнопку
         buttonSave.setOnClickListener {
             val taskText = findViewById<EditText>(R.id.editTextTask).text.toString()
             val spinnerPriority = findViewById<Spinner>(R.id.spinnerPriority)
@@ -110,21 +104,18 @@ class AddTaskActivity : AppCompatActivity() {
             }
 
             setResult(Activity.RESULT_OK, resultIntent)
-            finish() // Завершаем активность
+            finish()
         }
 
         val buttonDelete: Button = findViewById(R.id.buttonDelete)
 
         buttonDelete.setOnClickListener {
-            // Очищаем текст задачи
             val editTextTask = findViewById<EditText>(R.id.editTextTask)
             editTextTask.text.clear()
 
-            // Сбрасываем значение Spinner
             val spinnerPriority = findViewById<Spinner>(R.id.spinnerPriority)
             spinnerPriority.setSelection(0)
 
-            // Очищаем текст выбранной даты
             val selectedDateText = findViewById<TextView>(R.id.selectedDateText)
             selectedDateText.text = ""
         }
@@ -192,15 +183,11 @@ class AddTaskActivity : AppCompatActivity() {
     class CustomSpinnerAdapter(context: Context, items: Array<String>) :
         ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, items) {
 
-        // Метод для отображения выбранного элемента в Spinner (не изменяем цвет здесь)
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-            // Получаем стандартное представление для элемента
             val view = super.getView(position, convertView, parent)
 
-            // Находим TextView, в котором отображается выбранный элемент
             val textView = view.findViewById<TextView>(android.R.id.text1)
 
-            // Меняем цвет текста для выбранного элемента
             textView.setTextColor(Color.parseColor("#4D000000"))
 
             textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
@@ -209,13 +196,10 @@ class AddTaskActivity : AppCompatActivity() {
         }
 
 
-        // Метод для отображения элементов в выпадающем списке
         override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
-            // Получаем представление для элемента выпадающего списка
             val view = super.getDropDownView(position, convertView, parent)
             val textView = view.findViewById<TextView>(android.R.id.text1)
 
-            // Проверяем, если элемент "!! Высокий", устанавливаем красный цвет
             if (getItem(position) == "!! Высокий") {
                 textView.setTextColor(Color.parseColor("#FF3B30"))  // Красный цвет для "!! Высокий"
             } else {
